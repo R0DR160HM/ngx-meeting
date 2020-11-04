@@ -63,41 +63,38 @@ export class NgxMeetingComponent extends EventsComponent implements OnInit, OnDe
   }
 
   public addEventListeners() {
-    const events = [
-      'cameraError',
-      'avatarChanged',
-      'audioAvailabilityChanged',
-      'audioMuteStatusChanged',
-      'endpointTextMessageReceived',
-      'largeVideoChanged',
-      'log',
-      'micError',
-      'screenSharingStatusChanged',
-      'dominantSpeakerChanged',
-      'tileViewChanged',
-      'incomingMessage',
-      'outgoingMessage',
-      'displayNameChange',
-      'devideListChanged',
-      'emailChange',
-      'feedbackSubmitted',
-      'filmstripDisplayChanged',
-      'participantJoined',
-      'participantKickedOut',
-      'participantLeft',
-      'participantRoleChanged',
-      'passwordRequired',
-      'videoConferenceJoined',
-      'videoConferenceLeft',
-      'videoAvailabilityChanged',
-      'videoMuteStatusChanged',
-      'videoQualityChanged',
-      'readyToClose',
-      'subjectChange',
-      'suspendDetected'
-    ];
-    events.forEach(e => {
-      this.api.on(e, this[e].emit);
+    this.api.addEventListeners({
+      cameraError: this.cameraError.emit,
+      avatarChanged: this.avatarChanged.emit,
+      audioAvailabilityChanged: this.audioAvailabilityChanged.emit,
+      audioMuteStatusChanged: this.audioMuteStatusChanged.emit,
+      endpointTextMessageReceived: this.endpointTextMessageReceived.emit,
+      largeVideoChanged: this.largeVideoChanged.emit,
+      log: this.log.emit,
+      micError: this.micError.emit,
+      screenSharingStatusChanged: this.screenSharingStatusChanged.emit,
+      dominantSpeakerChanged: this.dominantSpeakerChanged.emit,
+      tileViewChanged: this.tileViewChanged.emit,
+      incomingMessage: this.incomingMessage.emit,
+      outgoingMessage: this.outgoingMessage.emit,
+      displayNameChange: this.displayNameChange.emit,
+      deviceListChanged: this.deviceListChanged.emit,
+      emailChange: this.emailChange.emit,
+      feedbackSubmitted: this.feedbackSubmitted.emit,
+      filmstripDisplayChanged: this.filmstripDisplayChanged.emit,
+      participantJoined: this.participantJoined.emit,
+      participantKickedOut: this.participantKickedOut.emit,
+      participantLeft: this.participantLeft.emit,
+      participantRoleChanged: this.participantRoleChanged.emit,
+      passwordRequired: this.passwordRequired.emit,
+      videoConferenceJoined: this.videoConferenceJoined.emit,
+      videoConferenceLeft: this.videoConferenceLeft.emit,
+      videoAvailabilityChanged: this.videoAvailabilityChanged.emit,
+      videoMuteStatusChanged: this.videoMuteStatusChanged.emit,
+      videoQualityChanged: this.videoQualityChanged.emit,
+      readyToClose: this.readyToClose.emit,
+      subjectChange: this.subjectChange.emit,
+      suspendDetected: this.suspendDetected.emit
     });
   }
 
