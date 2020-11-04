@@ -1,14 +1,13 @@
-import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Options } from '../models/Options';
 import { NgxMeetingService } from '../service/ngx-meeting.service';
-import JitsiMeetExternalAPI from 'jitsi-iframe-api';
 import { EventsComponent } from './events.component';
 
 @Component({
   selector: 'ngx-meeting',
   templateUrl: './ngx-meeting.component.html'
 })
-export class NgxMeetingComponent extends EventsComponent implements OnInit, OnDestroy {
+export class NgxMeetingComponent extends EventsComponent implements AfterViewInit, OnDestroy {
 
   // Container where the meeting will be embbed
   @ViewChild('meetingContainer', { static: true })
@@ -46,8 +45,9 @@ export class NgxMeetingComponent extends EventsComponent implements OnInit, OnDe
     }
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.prepareOptions();
+    // @ts-ignore:next-line
     this.api = new JitsiMeetExternalAPI(this.domain, this.options);
     this.addEventListeners();
     this.service.setApi(this.api);
