@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Options } from '../models/Options';
 import { NgxMeetingService } from '../service/ngx-meeting.service';
-import JitsiMeetExternalAPI from 'lib-jitsi-meet-dist/dist/external_api.min.js';
+import JitsiMeetExternalAPI from 'jitsi-iframe-api';
 import { EventsComponent } from './events.component';
 
 @Component({
