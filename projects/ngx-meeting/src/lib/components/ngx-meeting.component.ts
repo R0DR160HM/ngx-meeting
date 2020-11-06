@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, HostListener, Input, OnDestroy, O
 import { Options } from '../models/Options';
 import { NgxMeetingService } from '../service/ngx-meeting.service';
 import { EventsComponent } from './events.component';
+import JitsiMeetExternalAPI from 'jitsi-iframe-api';
 
 @Component({
   selector: 'ngx-meeting',
@@ -47,7 +48,6 @@ export class NgxMeetingComponent extends EventsComponent implements AfterViewIni
 
   ngAfterViewInit() {
     this.prepareOptions();
-    // @ts-ignore:next-line
     this.api = new JitsiMeetExternalAPI(this.domain, this.options);
     this.addEventListeners();
     this.service.setApi(this.api);
