@@ -1,9 +1,9 @@
 {
   "name": "ngx-meeting",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
-    "jitsi-iframe-api": "^1.0.0"
+    "@achris07/lib-jitsi-meet": "1.4866.0"
   }
 }

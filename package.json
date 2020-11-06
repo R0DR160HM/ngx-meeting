@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@achris07/lib-jitsi-meet": "^1.4866.0",
     "@angular/animations": "~8.2.14",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
@@ -19,7 +20,6 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "jitsi-iframe-api": "^1.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
