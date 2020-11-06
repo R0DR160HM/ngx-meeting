@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import JitsiMeetExternalAPI from '@achris07/lib-jitsi-meet';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnDestroy, ViewChild } from '@angular/core';
 import { Options } from '../models/Options';
 import { NgxMeetingService } from '../service/ngx-meeting.service';
 import { EventsComponent } from './events.component';
@@ -22,19 +21,25 @@ export class NgxMeetingComponent extends EventsComponent implements AfterViewIni
   @Input()
   public options: Options;
 
+  @Input()
+  public roomName = 'Lib_created_by_R0DR160HM';
+
   // Width of the meeting container (default: 100%)
   @Input()
-  public width = '100%';
+  public width = '100vw';
 
   // Height of the meeting container (default: 100%)
   @Input()
-  public height = '100%';
+  public height = '100vh';
 
   // The Jitsi API
   private api: any;
 
+  // Jitsi CDN
+  private cdn = 'https://meet.jit.si/external_api.js';
+
   constructor(
-    private service: NgxMeetingService
+    private service: NgxMeetingService,
   ) {
     super();
   }
@@ -48,17 +53,28 @@ export class NgxMeetingComponent extends EventsComponent implements AfterViewIni
 
   ngAfterViewInit() {
     this.prepareOptions();
-    this.api = new JitsiMeetExternalAPI(this.domain, this.options);
-    this.addEventListeners();
-    this.service.setApi(this.api);
+    this.start();
+  }
+
+  public start() {
+    const tag = window.document.createElement('script');
+    tag.src = this.cdn;
+    tag.onload = () => {
+      // @ts-ignore
+      this.api = new JitsiMeetExternalAPI(this.domain, this.options);
+      this.addEventListeners();
+      this.service.setApi(this.api);
+    };
+    window.document.body.appendChild(tag);
   }
 
   public prepareOptions() {
     const options: any = this.options || {};
     this.options = Object.assign(options, {
-      width: '100%',
-      height: '100%',
-      parentNode: this.container.nativeElement
+      width: this.width,
+      height: this.height,
+      parentNode: this.container.nativeElement,
+      roomName: this.roomName
     });
   }
 

@@ -1,9 +1,8 @@
 {
   "name": "ngx-meeting",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14",
-    "@achris07/lib-jitsi-meet": "1.4866.0"
+    "@angular/core": "^8.2.14"
   }
 }

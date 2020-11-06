@@ -1,6 +1,17 @@
 # NgxMeeting
 
-This library is in development stage and totally instable, do not use in production.
+A simple lib to create embed meeting with Jitsi iFrame API (https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe)
+
+# Instalation
+
+To install use `npm i ngx-meeting`
+
+# Getting Started
+
+To start, import the `NgxMeetingModule` and than, in your template declare the NgxMeetingComponent passing your meeting url in the domain @Input() (if you dont have your own domain, you can use "meet.jit.si"):
+`
+<ngx-meeting domain="<your_domain || meet.jit.si>/<random_stuff_that_you_want>"><ngx-meeting>
+`
 
 <!-- This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
 
